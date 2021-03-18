@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
+import Navbar from "../components/navbar";
 import SEO from "../components/seo"
 
 import VanImage from "../components/VanImage";
@@ -9,6 +10,7 @@ import VanImage from "../components/VanImage";
 
 const VanPage = () => (
   <Layout>
+    <Navbar />
     <section className="section">
       <div className="container">
         <SEO title="2011 Freightliner Sprinter For Sale" />

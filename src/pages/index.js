@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
+import Navbar from "../components/navbar"
 
 import SEO from "../components/seo"
 
@@ -10,19 +11,29 @@ import LandingPageSplashPicture from "../components/LandingPageSplashPicture"
 
 const IndexPage = () => (
   <Layout>
+    <Navbar />
     <section className="section">
-      <div class="container">
-        <SEO title="wilderroses" />
-        <h1 className="title"> We are the Wilderroses</h1>
-        <p>Amanda, Henry, Sandwich, and Stella!</p>
-      </div>
-      <div class="container">
-        <LandingPageSplashPicture />
-      </div>
-        
+      <div className="columns">
+      <div className="column">
+          <div class="container">      
+            <section class="hero ">
+              <div class="hero-body">
+                <SEO title="wilderroses" />
+                <p className="title"> We are the Wilderroses</p>    
 
-
-        <Link to="/van">Van</Link>
+                <p class="subtitle">
+                Amanda, Henry, Sandwich, and Stella!
+                </p>
+              </div>
+            </section>
+            </div>
+          </div>
+        <div className="column">
+          <div class="container">
+              <LandingPageSplashPicture />
+          </div>
+        </div>
+      </div>
     </section>
     
 
