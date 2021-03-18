@@ -6,13 +6,13 @@ import Navbar from "../components/navbar";
 import SEO from "../components/seo"
 
 import VanImage from "../components/VanImage";
+import Section from "../components/section"; 
 
 
 const VanPage = () => (
   <Layout>
     <Navbar />
-    <section className="section">
-      <div className="container">
+      <Section>
         <SEO title="2011 Freightliner Sprinter For Sale" />
         <h1 className="title">Sprinter Van For Sale</h1>
         
@@ -22,23 +22,25 @@ const VanPage = () => (
             <VanImage />
           </div>
         <p>For the first 60 days of 2021 this van housed our family on an epic 7500 mile road trip.</p>
-      </div>
-    </section>
-    <section>
-      <div className="container">
-        <div className="columns">
-            <div className="column">
-              <h2 className="title is-2">The Basics</h2>
-                <ul>
-                  <li>2011 Freightliner Sprinter 2500</li>
-                  <li>V6 Turbodiesel two wheel drive</li>
-                  <li>144 high roof</li>
-                  <li>150,XXX Miles</li>
-                  <li>Extensive service records</li>
-                </ul>
-            </div>
-            <div className="column">
-            <h2 className="title is-2">The Buildout</h2>
+      </Section>
+    
+      <div className="columns">
+        <div className="column">
+          <Section>
+            <h2 className="title is-2">Basics</h2>
+              <ul>
+                <li>2011 Freightliner Sprinter 2500</li>
+                <li>V6 Turbodiesel two wheel drive</li>
+                <li>144 high roof</li>
+                <li>150,XXX Miles</li>
+                <li>Extensive service records</li>
+              </ul>
+            </Section>
+        </div>
+      
+      <div className="column">
+        <Section>
+          <h2 className="title is-2">Buildout</h2>
             <ul>
               <li>Rigid foam + spray foam insulation</li>
               <li>Dimmable LED ceiling lights</li>
@@ -50,12 +52,12 @@ const VanPage = () => (
               <li>Shorepower plug</li>
               <li>Roof rails for rack/solar/awning</li>
             </ul>
-            </div>
-          </div>
+        </Section>
+      </div>
+      </div>
+      
 
-          <Link to="/">Go back to the homepage</Link>`
-          </div>
-      </section>
+          
   </Layout>
 )
 
