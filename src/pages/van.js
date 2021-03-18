@@ -25,10 +25,10 @@ const VanPage = () => (
       </div>
     </section>
     <section>
-      <div class="container">
-        <div class="columns">
-            <div class="column">
-              <h2 class="title is-2">The Basics</h2>
+      <div className="container">
+        <div className="columns">
+            <div className="column">
+              <h2 className="title is-2">The Basics</h2>
                 <ul>
                   <li>2011 Freightliner Sprinter 2500</li>
                   <li>V6 Turbodiesel two wheel drive</li>
@@ -37,8 +37,8 @@ const VanPage = () => (
                   <li>Extensive service records</li>
                 </ul>
             </div>
-            <div class="column">
-            <h2 class="title is-2">The Buildout</h2>
+            <div className="column">
+            <h2 className="title is-2">The Buildout</h2>
             <ul>
               <li>Rigid foam + spray foam insulation</li>
               <li>Dimmable LED ceiling lights</li>
@@ -48,7 +48,7 @@ const VanPage = () => (
               <li>Diesel heater</li>
               <li>1500W charger/interver</li>
               <li>Shorepower plug</li>
-              <li>Roof rails for rack/solar/awning</li>j
+              <li>Roof rails for rack/solar/awning</li>
             </ul>
             </div>
           </div>

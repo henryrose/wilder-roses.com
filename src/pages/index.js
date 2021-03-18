@@ -15,13 +15,13 @@ const IndexPage = () => (
     <section className="section">
       <div className="columns">
       <div className="column">
-          <div class="container">      
-            <section class="hero ">
-              <div class="hero-body">
+          <div className="container">      
+            <section className="hero ">
+              <div className="hero-body">
                 <SEO title="wilderroses" />
                 <p className="title"> We are the Wilderroses</p>    
 
-                <p class="subtitle">
+                <p className="subtitle">
                 Amanda, Henry, Sandwich, and Stella!
                 </p>
               </div>
@@ -29,7 +29,7 @@ const IndexPage = () => (
             </div>
           </div>
         <div className="column">
-          <div class="container">
+          <div className="container">
               <LandingPageSplashPicture />
           </div>
         </div>
