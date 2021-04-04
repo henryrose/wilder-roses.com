@@ -1,12 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
+
 
 import Layout from "../components/layout"
 import Navbar from "../components/navbar"
 
 import SEO from "../components/seo"
 
-import familyPicture from "../images/family-picture.jpg"
 import LandingPageSplashPicture from "../components/LandingPageSplashPicture"
 
 const IndexPage = () => (
