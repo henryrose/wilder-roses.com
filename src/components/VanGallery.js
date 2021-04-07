@@ -1,6 +1,6 @@
 import React from "react"
 
-import VanImage from "../components/VanImage";
+import VanImage from "./VanImage";
 import Img from "gatsby-image"
 
 
@@ -14,7 +14,7 @@ const GalleryImage = (image) => {
     }
     return <div style={{
             flexGrow: 4,
-            width: "200px"
+            width: "260px"
         }}>
         <Img fluid={image.image.childImageSharp.fluid} />
     </div>;
@@ -32,7 +32,7 @@ const VanGallery = () => {
         nodes{
             id
             childImageSharp {
-                fluid(maxWidth: 600) {
+                fluid(maxWidth: 260) {
                     ...GatsbyImageSharpFluid
                 }
             }

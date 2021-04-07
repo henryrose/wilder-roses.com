@@ -9,6 +9,7 @@ import VanImage from "../components/VanImage";
 import Section from "../components/section"; 
 import VanGallery from "../components/VanGallery";
 
+import ContactForm from "../components/ContactForm"
 
 const VanPage = () => (
   <Layout>
@@ -25,19 +26,20 @@ const VanPage = () => (
       
     <Section>
       <h2 className="title is-2">Our Vanstory</h2>
-
-      <p>For the first 60 days of 2021 this van housed our family on an epic 7500 mile road trip through the western United States.  It kept us warm on cold nights, kept us dry in coastal rain storms and carried us safely both on gravel backroads and on the highway. We love this van!  But we won't have another chance to travel like this for some time, so it's time for the van to move on to a new family.</p>
+      <p>For the first 60 days of 2021 this van housed our family on an epic 7500 mile road trip through the western United States.  It kept us warm on cold nights, kept us dry in coastal rain storms and carried us safely both on gravel backroads and on the highway. We love this van!</p>
+      <p>Sadly, we won't have another chance to travel like this for some time, so it's time for the van to move on to a new family.</p>
       <p>We purchased this van with a different camper interior that did not meet our needs.  We spent two months re-building it from the metal up. We documented this process with many pictures and are happy to share any details of the build.</p>
+      <p><ContactForm /></p>
     </Section>
     <div className="columns">
       <div className="column">
         <Section>
           <h3 className="title is-3">Basics</h3>
-            <ul>
+            <ul className="disc">
               <li>2011 Freightliner Sprinter 2500</li>
               <li>V6 Turbodiesel two wheel drive</li>
               <li>144 high roof</li>
-              <li>150,XXX Miles</li>
+              <li>152,XXX Miles</li>
               <li>Extensive service records</li>
             </ul>
           </Section>
@@ -46,7 +48,7 @@ const VanPage = () => (
       <div className="column">
         <Section>
           <h3 className="title is-3">Camping</h3>
-            <ul>
+          <ul className="disc">
               <li>Rigid foam + spray foam insulation</li>
               <li>Dimmable LED ceiling lights</li>
               <li>Cedar tounge and groove walls</li>
@@ -63,7 +65,9 @@ const VanPage = () => (
               <li>Roof rails for rack/solar/awning</li>
               <li>Entryway step stool</li>
               <li>Water tank fill hose with inline filter</li>
-
+              <li>Roof mounted Fantastic Fan</li>
+              <li> CR Lawrence "t-vent" window in sliding door</li>
+              <li> CR Lawrence tinted windows in rear doors</li>
             </ul>
         </Section>
       </div>
@@ -71,7 +75,7 @@ const VanPage = () => (
       <div className="column">
         <Section>
           <h3 className="title is-3">Driving</h3>
-            <ul>
+          <ul className="disc">
               <li>17" Method Racing wheels</li>
               <li>All Terrain Tires: Falken Wildpeak AT3 265 /70 R17</li>
               <li>Aftermarket stereo with Apple Carplay</li>
@@ -81,7 +85,7 @@ const VanPage = () => (
       <div className="column">
         <Section>
           <h3 className="title is-3">Safety</h3>
-            <ul>
+          <ul className="disc">
               <li>Backup Camera</li>
               <li>Carbon Monoxide detector</li>
               <li>Fire extinguisher</li>
@@ -90,6 +94,10 @@ const VanPage = () => (
         </Section>
       </div>
     </div>
+    <Section>
+      <h2 className="title is-2">Price: $41,500</h2>
+      <ContactForm />
+    </Section>
     <div style={{
           
     }}>
