@@ -24,6 +24,15 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    // {
+    //   resolve: 'gatsby-source-s3-image',
+    //   options: {
+    //     bucketName: 'images.wilder-roses.com',
+    //     domain: 's3-us-west-2.amazonaws.com/', // [op ztional] Not necessary to define for AWS S3; defaults to `s3.amazonaws.com` s
+    //     region: 'us-west-2',
+    //     protocol: 'http', // [optional] Default to `https`.
+    //   },
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

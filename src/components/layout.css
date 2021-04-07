@@ -1,1 +1,16 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
+
+.van-page-header{
+    position: relative; 
+}
+
+
+.van-page-header section{
+    padding:0;
+}
+.van-page-header h1{
+    font-size: 3.5em;
+    position: absolute;
+    top: 50px;
+    z-index: 100;
+}
