@@ -1,0 +1,2 @@
+ name: Deploy Gatsby to AWS S3
+  uses: jonelantha/gatsby-s3-action@v1
