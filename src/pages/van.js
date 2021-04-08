@@ -41,6 +41,7 @@ const VanPage = () => (
               <li>144 high roof</li>
               <li>152,XXX Miles</li>
               <li>Extensive service records</li>
+              <li>Clean title</li>
             </ul>
           </Section>
       </div>
@@ -58,7 +59,7 @@ const VanPage = () => (
               <li>5 gallon onboard grey water tank</li>
               <li>Convertable bed/couch</li>
               <li>Passenger side seat swivel</li>
-              <li>Diesel heater</li>
+              <li>Diesel cabin heater</li>
               <li>Insulated window covers</li>
               <li>1500W charger/interver</li>
               <li>Shorepower plug</li>
@@ -78,7 +79,10 @@ const VanPage = () => (
           <ul className="disc">
               <li>17" Method Racing wheels</li>
               <li>All Terrain Tires: Falken Wildpeak AT3 265 /70 R17</li>
+              <li>Stock wheels and tires included</li>
+              <li>Full size spare tire</li>
               <li>Aftermarket stereo with Apple Carplay</li>
+              <li>Factory tow hitch</li>
             </ul>
         </Section>
       </div>
