@@ -37,8 +37,10 @@ const VanPage = () => (
           <h3 className="title is-3">Basics</h3>
             <ul className="disc">
               <li>2011 Freightliner Sprinter 2500</li>
-              <li>V6 Turbodiesel two wheel drive</li>
-              <li>144 high roof</li>
+              <li>V6 Turbodiesel</li>
+              <li>Rear wheel drive</li>
+              <li>144" wheel base</li>
+              <li>High roof</li>
               <li>152,XXX Miles</li>
               <li>Extensive service records</li>
               <li>Clean title</li>
@@ -61,6 +63,7 @@ const VanPage = () => (
               <li>Passenger side seat swivel</li>
               <li>Diesel cabin heater</li>
               <li>Insulated window covers</li>
+              <li>Brand new (April 7, 2021) house batteries</li>
               <li>1500W charger/interver</li>
               <li>Shorepower plug</li>
               <li>Roof rails for rack/solar/awning</li>
