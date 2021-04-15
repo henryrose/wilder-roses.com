@@ -64,7 +64,6 @@ const VanPage = () => (
               <li>Diesel cabin heater</li>
               <li>Insulated window covers</li>
               <li>Brand new (April 7, 2021) house batteries</li>
-              <li>1500W charger/interver</li>
               <li>Shorepower plug</li>
               <li>Roof rails for rack/solar/awning</li>
               <li>Entryway step stool</li>
@@ -102,7 +101,7 @@ const VanPage = () => (
       </div>
     </div>
     <Section>
-      <h2 className="title is-2">Price: $41,500</h2>
+      <h2 className="title is-2">Price: $38,500</h2>
       <ContactForm />
     </Section>
     <div style={{
