@@ -52,7 +52,7 @@ class Navbar extends React.Component{
                         <div id="navbarBasicExample" className={navbarMenuClassname}>
                             <div className="navbar-start">
                                 <Link to="/" className="navbar-item">Home</Link>
-                                <Link to="/van" className="navbar-item">Van for Sale</Link>
+                                <Link to="/van" className="navbar-item">Van (SOLD!)</Link>
                             </div>
                         </div>
                     </nav>
