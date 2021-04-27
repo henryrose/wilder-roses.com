@@ -18,7 +18,7 @@ const VanPage = () => (
     <div className="van-page-header">
       <Section>
         <SEO title="2011 Freightliner Sprinter For Sale" />
-        <h1 className="title">Sprinter Van For Sale</h1>
+        <h1 className="title">Sprinter Van <strike>For Sale</strike> SOLD!</h1>
       </Section>
       <VanImage />
     </div>
@@ -29,7 +29,7 @@ const VanPage = () => (
       <p>For the first 60 days of 2021 this van housed our family on an epic 7500 mile road trip through the western United States.  It kept us warm on cold nights, kept us dry in coastal rain storms and carried us safely both on gravel backroads and on the highway. We love this van!</p>
       <p>Sadly, we won't have another chance to travel like this for some time, so it's time for the van to move on to a new family.</p>
       <p>We purchased this van with a different camper interior that did not meet our needs.  We spent two months re-building it from the metal up. We documented this process with many pictures and are happy to share any details of the build.</p>
-      <p><ContactForm /></p>
+      
     </Section>
     <div className="columns">
       <div className="column">
@@ -102,7 +102,7 @@ const VanPage = () => (
     </div>
     <Section>
       <h2 className="title is-2">Price: $38,500</h2>
-      <ContactForm />
+        
     </Section>
     <div style={{
           
