@@ -21,7 +21,7 @@ const IndexPage = () => (
                 <p className="title"> We are the Wilderroses</p>    
 
                 <p className="subtitle">
-                Amanda, Henry, Sandwich, and Stella! Hello.
+                Amanda, Henry, Sandwich, and Stella!
                 </p>
               </div>
             </section>
