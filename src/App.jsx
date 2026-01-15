@@ -4,8 +4,7 @@ function App() {
   return (
     <div className="container">
       <header>
-        <h1>The Wilder-Roses</h1>
-        <p className="tagline">Welcome to our little corner of the internet</p>
+        <h1>The WilderRoses</h1>
       </header>
 
       <main>
