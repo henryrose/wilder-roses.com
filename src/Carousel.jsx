@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 
+const base = import.meta.env.BASE_URL
 const photos = [
-  '/photo1.jpg',
-  '/photo2.jpg',
-  '/photo3.jpg',
-  '/photo4.jpg',
-  '/photo5.jpg',
+  `${base}photo1.jpg`,
+  `${base}photo2.jpg`,
+  `${base}photo3.jpg`,
+  `${base}photo4.jpg`,
+  `${base}photo5.jpg`,
 ]
 
 function Carousel() {
