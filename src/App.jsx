@@ -19,6 +19,14 @@ function App() {
         <section className="photo-section">
           <Carousel />
         </section>
+
+        <section className="writing">
+          <h2>Writing</h2>
+          <a className="post-link" href="/sailing/pssc-2026/">
+            <span className="post-title">Learnings from an Outing with the PTSA Laser Fleet</span>
+            <span className="post-meta">Sailing &middot; September 2026</span>
+          </a>
+        </section>
       </main>
 
       <footer>
