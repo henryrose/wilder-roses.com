@@ -90,10 +90,11 @@
 
 
   // ---- 10x replay of a track ----
-  var SPEEDUP = 10;
+  var REPLAY_SECONDS = 30; // each day's session plays out in about 30 seconds
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function setupReplay(map, el, day, pts, bright) {
     var total = pts[pts.length - 1][3];
+    var SPEEDUP = total / REPLAY_SECONDS;
     var t = 0, k = 0, playing = false, last = null, raf = null, inView = false, userPaused = false, holdUntil = 0;
     var boat = L.circleMarker([pts[0][0], pts[0][1]], { radius: 6, color: '#fff', weight: 2, fillColor: '#1a365d', fillOpacity: 1, interactive: false });
 
@@ -102,7 +103,7 @@
       var d = L.DomUtil.create('div', 'replay');
       d.innerHTML = '<button type="button" class="rp-play" aria-label="Pause replay">&#10074;&#10074;</button>' +
         '<button type="button" class="rp-restart" aria-label="Restart replay">&#8634;</button>' +
-        '<span class="rp-read"><span class="rp-time"></span><span class="rp-spd"></span><span class="rp-x">' + SPEEDUP + '&times; speed</span>' +
+        '<span class="rp-read"><span class="rp-time"></span><span class="rp-spd"></span><span class="rp-x">' + Math.round(SPEEDUP) + '&times; speed</span>' +
         '<span class="rp-bar"><i></i></span></span>';
       L.DomEvent.disableClickPropagation(d);
       return d;
