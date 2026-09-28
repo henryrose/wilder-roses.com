@@ -46,11 +46,15 @@
     }).addTo(map);
     map.fitBounds(bounds, { padding: [18, 18] });
 
+    // Full track, faded; a second, full-colour copy is revealed as the replay runs.
+    var bright = [];
     for (var i = 0; i < pts.length - 1; i++) {
-      L.polyline([[pts[i][0], pts[i][1]], [pts[i + 1][0], pts[i + 1][1]]], {
-        color: speedColor((pts[i][2] + pts[i + 1][2]) / 2), weight: 3.5, opacity: 1, lineCap: 'round', interactive: false
-      }).addTo(map);
+      var ll = [[pts[i][0], pts[i][1]], [pts[i + 1][0], pts[i + 1][1]]];
+      var c = speedColor((pts[i][2] + pts[i + 1][2]) / 2);
+      L.polyline(ll, { color: c, weight: 3.5, opacity: 0.2, lineCap: 'round', interactive: false }).addTo(map);
+      bright.push(L.polyline(ll, { color: c, weight: 3.5, opacity: 0, lineCap: 'round', interactive: false }).addTo(map));
     }
+    setupReplay(map, el, day, pts, bright);
 
     var narrow = el.clientWidth < 500;
     notes.forEach(function (n) {
@@ -82,6 +86,85 @@
     }
     map.on('mousemove click', show);
     map.on('mouseout', function () { map.removeLayer(cursor); map.closeTooltip(tip); });
+  }
+
+
+  // ---- 10x replay of a track ----
+  var SPEEDUP = 10;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setupReplay(map, el, day, pts, bright) {
+    var total = pts[pts.length - 1][3];
+    var t = 0, k = 0, playing = false, last = null, raf = null, inView = false, userPaused = false, holdUntil = 0;
+    var boat = L.circleMarker([pts[0][0], pts[0][1]], { radius: 6, color: '#fff', weight: 2, fillColor: '#1a365d', fillOpacity: 1, interactive: false });
+
+    var ctl = L.control({ position: 'topright' });
+    ctl.onAdd = function () {
+      var d = L.DomUtil.create('div', 'replay');
+      d.innerHTML = '<button type="button" class="rp-play" aria-label="Pause replay">&#10074;&#10074;</button>' +
+        '<button type="button" class="rp-restart" aria-label="Restart replay">&#8634;</button>' +
+        '<span class="rp-read"><span class="rp-time"></span><span class="rp-spd"></span><span class="rp-x">' + SPEEDUP + '&times; speed</span>' +
+        '<span class="rp-bar"><i></i></span></span>';
+      L.DomEvent.disableClickPropagation(d);
+      return d;
+    };
+    ctl.addTo(map);
+    var box = ctl.getContainer();
+    var btn = box.querySelector('.rp-play'), bar = box.querySelector('.rp-bar i');
+    var tEl = box.querySelector('.rp-time'), sEl = box.querySelector('.rp-spd');
+
+    function setBtn() {
+      btn.innerHTML = playing ? '&#10074;&#10074;' : '&#9654;';
+      btn.setAttribute('aria-label', playing ? 'Pause replay' : 'Play replay');
+    }
+    function render() {
+      var j = Math.min(k, pts.length - 2);
+      var a = pts[j], b = pts[j + 1], f = b[3] > a[3] ? Math.max(0, Math.min(1, (t - a[3]) / (b[3] - a[3]))) : 0;
+      var lat = a[0] + (b[0] - a[0]) * f, lon = a[1] + (b[1] - a[1]) * f, kt = a[2] + (b[2] - a[2]) * f;
+      boat.setLatLng([lat, lon]).setStyle({ fillColor: speedColor(kt) });
+      if (!map.hasLayer(boat)) boat.addTo(map);
+      tEl.textContent = clock(day, t);
+      sEl.textContent = kt.toFixed(1) + ' kt';
+      bar.style.width = (100 * t / total) + '%';
+    }
+    function reset() {
+      for (var i = 0; i < bright.length; i++) bright[i].setStyle({ opacity: 0 });
+      t = 0; k = 0; render();
+    }
+    function showAll() {
+      for (var i = 0; i < bright.length; i++) bright[i].setStyle({ opacity: 1 });
+      t = total; k = pts.length - 2; render();
+    }
+    function frame(now) {
+      raf = null;
+      if (!playing) return;
+      if (last === null) last = now;
+      var dt = Math.min(0.25, (now - last) / 1000); last = now;
+      if (holdUntil) {
+        if (now < holdUntil) { raf = requestAnimationFrame(frame); return; }
+        holdUntil = 0; reset();
+      }
+      t += dt * SPEEDUP;
+      while (k < pts.length - 1 && pts[k + 1][3] <= t) { bright[k].setStyle({ opacity: 1 }); k++; }
+      if (t >= total) { t = total; render(); holdUntil = now + 2500; raf = requestAnimationFrame(frame); return; }
+      render();
+      raf = requestAnimationFrame(frame);
+    }
+    function play() { if (playing) return; if (t >= total) reset(); playing = true; last = null; setBtn(); if (!raf) raf = requestAnimationFrame(frame); }
+    function pause() { playing = false; setBtn(); if (raf) { cancelAnimationFrame(raf); raf = null; } }
+
+    btn.addEventListener('click', function () { if (playing) { userPaused = true; pause(); } else { userPaused = false; play(); } });
+    box.querySelector('.rp-restart').addEventListener('click', function () { holdUntil = 0; reset(); userPaused = false; play(); });
+
+    if (reduceMotion) { showAll(); setBtn(); return; }
+    reset(); setBtn();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          inView = e.isIntersecting;
+          if (inView && !userPaused) play(); else if (!inView) pause();
+        });
+      }, { threshold: 0.4 }).observe(el);
+    } else { play(); }
   }
 
   function find(day, secs) {

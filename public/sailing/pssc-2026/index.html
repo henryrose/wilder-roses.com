@@ -57,6 +57,15 @@
   .leaflet-tooltip.map-note { font:500 12px/1.3 'DM Sans',sans-serif; color:#1a365d; border:0; box-shadow:0 1px 4px rgba(0,0,0,.18); padding:4px 7px; }
   .leaflet-tooltip.map-tip { font:13px/1.3 'DM Sans',sans-serif; color:#2d3748; }
   .leaflet-container { font-family:'DM Sans',sans-serif; }
+  .replay { display:flex; align-items:center; gap:.35rem; background:rgba(255,255,255,.94); border-radius:10px; padding:.35rem .5rem; box-shadow:0 1px 4px rgba(0,0,0,.18); font:13px/1.2 'DM Sans',sans-serif; color:#2d3748; }
+  .replay button { width:28px; height:28px; border:0; border-radius:50%; background:#1a365d; color:#fff; font-size:11px; cursor:pointer; display:grid; place-items:center; }
+  .replay .rp-restart { background:#e4e8ec; color:#1a365d; font-size:15px; }
+  .replay .rp-read { display:grid; grid-template-columns:auto auto; column-gap:.5rem; align-items:baseline; margin-left:.2rem; min-width:128px; }
+  .replay .rp-time { font-weight:600; color:#1a365d; font-variant-numeric:tabular-nums; }
+  .replay .rp-spd { font-variant-numeric:tabular-nums; text-align:right; }
+  .replay .rp-x { grid-column:1 / -1; font-size:11px; color:#718096; }
+  .replay .rp-bar { grid-column:1 / -1; height:3px; background:#e4e8ec; border-radius:2px; margin-top:3px; overflow:hidden; }
+  .replay .rp-bar i { display:block; height:100%; width:0; background:#1a365d; }
   .soft-tiles { filter:grayscale(1) contrast(.9) brightness(1.08); }
   .chart-wrap { position:relative; margin:1.75rem 0 .5rem; }
   .chart-wrap h3 { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1.1rem; color:var(--navy); margin-bottom:.25rem; }
@@ -171,7 +180,7 @@
         <div class="stat"><b>1.7 kt</b><span>average speed</span></div>
         <div class="stat"><b>3.8 kt</b><span>top speed</span></div>
       </div>
-      <p class="cap">Saturday's track from my watch (both maps use the same scale and colours). Most of the afternoon was a slow scribble near the start line; the one straight line north is our beat to the windward mark, and the line east is the sail home. Hover or tap the track for time and speed.</p>
+      <p class="cap">Saturday's track from my watch (both maps use the same scale and colours). Most of the afternoon was a slow scribble near the start line; the one straight line north is our beat to the windward mark, and the line east is the sail home. The replay runs at 10&times; speed; hover or tap the track for time and speed.</p>
     </figure>
     <p>Back at the clubhouse we had a drink and ended up sitting for a long time with the Seattle Snipe fleet, a friendly and delightfully eclectic crew who had all brought pies and insisted on sharing them.</p>
     <p>We left the boats at the marina, made a West Marine run for bits and bobs, and then headed out to Seattle's Central District for Ethiopian food, which is hard to come by in Jefferson County.</p>
@@ -196,7 +205,7 @@
         <div class="stat"><b>5.0 kt</b><span>average speed</span></div>
         <div class="stat"><b>8.4 kt</b><span>top speed</span></div>
       </div>
-      <p class="cap">Sunday's track, same map and same colours. Long, dark, fast legs up and down the beach: nearly twice Saturday's distance in two-thirds of the time. Hover or tap the track for time and speed.</p>
+      <p class="cap">Sunday's track, same map and same colours. Long, dark, fast legs up and down the beach: nearly twice Saturday's distance in two-thirds of the time. The replay runs at 10&times; speed; hover or tap the track for time and speed.</p>
     </figure>
     <p>Back at the dock I spent a long time talking with Alex, who runs the District 22 Laser fleet. We talked about their youth development program, which is impressively organized; about which regattas make sense for Port Townsend sailors to target next (Pumpkin Bowl, Turkey Bowl, Frigid Digit); and about what we could do to make our own small boat regatta in Port Townsend something sailors from around the Sound want to come to. Then we hightailed it to the Bainbridge ferry. I drove straight on with the boats. Hank and Lucas, in keeping with the weekend's theme, got held up behind.</p>
   
