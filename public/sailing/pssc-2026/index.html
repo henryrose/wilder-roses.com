@@ -43,6 +43,40 @@
   .signoff { margin-top:2.5rem; padding-top:1.25rem; border-top:1px solid #e4e8ec; font-style:italic; color:var(--muted); }
   footer { margin-top:3rem; text-align:center; color:var(--faint); font-size:.9rem; }
   footer a { color:var(--muted); }
+
+  /* GPS track maps, stats and chart */
+  .track { margin:2rem 0; }
+  .map { height:420px; border-radius:12px; overflow:hidden; background:#e4e8ec; z-index:0; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; margin:.75rem 0 0; }
+  .stat { background:#f5f7fa; border-radius:10px; padding:.7rem .8rem; }
+  .stat b { display:block; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1.45rem; color:var(--navy); line-height:1.1; }
+  .stat span { font-size:.8rem; color:var(--muted); }
+  .scale { display:flex; align-items:center; gap:.6rem; margin-top:.6rem; font-size:.8rem; color:var(--muted); }
+  .scale i { flex:0 0 160px; height:8px; border-radius:4px; background:linear-gradient(90deg,#86b6ef,#3987e5,#1c5cab,#0d366b); }
+  .track .cap { font-size:.9rem; color:var(--muted); line-height:1.5; margin:.6rem 0 0; }
+  .leaflet-tooltip.map-note { font:500 12px/1.3 'DM Sans',sans-serif; color:#1a365d; border:0; box-shadow:0 1px 4px rgba(0,0,0,.18); padding:4px 7px; }
+  .leaflet-tooltip.map-tip { font:13px/1.3 'DM Sans',sans-serif; color:#2d3748; }
+  .leaflet-container { font-family:'DM Sans',sans-serif; }
+  .soft-tiles { filter:grayscale(1) contrast(.9) brightness(1.08); }
+  .chart-wrap { position:relative; margin:1.75rem 0 .5rem; }
+  .chart-wrap h3 { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1.1rem; color:var(--navy); margin-bottom:.25rem; }
+  .chart-wrap .sub { font-size:.9rem; color:var(--muted); margin-bottom:.5rem; }
+  .legend { display:flex; gap:1.1rem; font-size:.85rem; color:var(--ink); margin-bottom:.35rem; }
+  .legend span::before { content:''; display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:.4rem; background:var(--c); vertical-align:-1px; }
+  #speed-chart { position:relative; }
+  #speed-chart svg { display:block; width:100%; height:auto; overflow:visible; }
+  #speed-chart .ax { font:12px 'DM Sans',sans-serif; fill:#718096; }
+  #speed-chart .dl { font:600 12px 'DM Sans',sans-serif; fill:#2d3748; }
+  #speed-chart rect:focus { outline:none; }
+  .viz-tip { position:absolute; transform:translate(-50%,-100%); background:#fff; color:#2d3748; font-size:.8rem; line-height:1.35; padding:.35rem .55rem; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.15); pointer-events:none; white-space:nowrap; }
+  details.data { font-size:.85rem; color:var(--muted); margin-top:.4rem; }
+  details.data table { border-collapse:collapse; margin-top:.4rem; }
+  details.data th, details.data td { padding:.2rem .7rem .2rem 0; text-align:right; }
+  details.data th:first-child, details.data td:first-child { text-align:left; }
+  @media (max-width:600px) {
+    .map { height:340px; }
+    .stats { grid-template-columns:repeat(2,1fr); }
+  }
   @media (max-width:600px) {
     body { font-size:17px; }
     main { padding:1.75rem 1.25rem 2rem; }
@@ -51,6 +85,7 @@
     figcaption { padding:.5rem 1.25rem 0; }
   }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 <body>
 <div class="container">
@@ -126,6 +161,18 @@
     </figure>
   
     <p>Eventually enough breeze filled in to get us to the committee boat for the south course, where the race committee was wrestling with technical problems. They got one race off in barely enough wind to move. All three of us made the windward mark, looked down the long, slow course ahead of us, looked at the clock, thought about how far we'd be from the haul-out with the wind dying, and made the decision to retire as a fleet and sail in. Hence the DNF.</p>
+
+    <figure class="track">
+      <div id="map-sat" class="map" role="img" aria-label="Map of Saturday's GPS track on Shilshole Bay, coloured by speed"></div>
+      <div class="scale">Slower <i></i> Faster</div>
+      <div class="stats">
+        <div class="stat"><b>1 h 58 m</b><span>on the water</span></div>
+        <div class="stat"><b>3.4 nm</b><span>sailed</span></div>
+        <div class="stat"><b>1.7 kt</b><span>average speed</span></div>
+        <div class="stat"><b>3.8 kt</b><span>top speed</span></div>
+      </div>
+      <p class="cap">Saturday's track from my watch (both maps use the same scale and colours). Most of the afternoon was a slow scribble near the start line; the one straight line north is our beat to the windward mark, and the line east is the sail home. Hover or tap the track for time and speed.</p>
+    </figure>
     <p>Back at the clubhouse we had a drink and ended up sitting for a long time with the Seattle Snipe fleet, a friendly and delightfully eclectic crew who had all brought pies and insisted on sharing them.</p>
     <p>We left the boats at the marina, made a West Marine run for bits and bobs, and then headed out to Seattle's Central District for Ethiopian food, which is hard to come by in Jefferson County.</p>
   
@@ -138,16 +185,38 @@
     <p>Sunday morning we knew the wind had come up, and we were eager. Rigging in 12 to 15 knots has a different energy than rigging in a drifter, and the whole yard was buzzing. Hank and Lucas also discovered they'd been cited for illegally parking their boats overnight, surely a sign that we were indeed a part of the event.</p>
     <p>Sailing out of the marina was a blast. We passed the Opti fleet, and I want it on record that some of those kids were absolutely ripping. Then we cleared the breakwater and met the waves.</p>
     <p>We don't get waves like that in Port Townsend Bay. It was a new condition for all of us, and it took real time to adapt. I'll be honest: sailing down to the start line was intimidating for this novice Laser sailor! I got to the line and looked around for my Laser brothers, and they were still a mile back, reaching along Golden Gardens. So I beat back up to them. Hank had gone over, it had taken him a long while to right the boat and recover, and he made the smart call to head in.</p>
-    <p>Lucas and I stayed out and just sailed. We kept it near the beach, worked upwind in the big stuff, and when the breeze eased a bit we drilled jibes and downwind runs. For me personally this was the payoff. I've been spending a lot of time on the hiking bench and in the gym this year, and Sunday was the first time I felt that work translate directly into being able to hold the boat down and keep it moving in real wind. We sailed for about an hour and a quarter, never started a race, and learned more than we would have in a month of Monday nights.</p>
+    <p>Lucas and I stayed out and just sailed. We kept it near the beach, worked upwind in the big stuff, and when the breeze eased a bit we drilled jibes and downwind runs. For me personally this was the payoff. I've been spending a lot of time on the hiking bench and in the gym this year, and Sunday was the first time I felt that work translate directly into being able to hold the boat down and keep it moving in real wind. We sailed for about an hour and a quarter, never started a race, and learned more than we would have in a month of Monday nights. At one point, riding a wave, my watch clocked 8.4 knots: right around the 7 to 8 knots where a Laser starts to get up on a plane.</p>
+
+    <figure class="track">
+      <div id="map-sun" class="map" role="img" aria-label="Map of Sunday's GPS track on Shilshole Bay, coloured by speed"></div>
+      <div class="scale">Slower <i></i> Faster</div>
+      <div class="stats">
+        <div class="stat"><b>1 h 16 m</b><span>on the water</span></div>
+        <div class="stat"><b>6.4 nm</b><span>sailed</span></div>
+        <div class="stat"><b>5.0 kt</b><span>average speed</span></div>
+        <div class="stat"><b>8.4 kt</b><span>top speed</span></div>
+      </div>
+      <p class="cap">Sunday's track, same map and same colours. Long, dark, fast legs up and down the beach: nearly twice Saturday's distance in two-thirds of the time. Hover or tap the track for time and speed.</p>
+    </figure>
     <p>Back at the dock I spent a long time talking with Alex, who runs the District 22 Laser fleet. We talked about their youth development program, which is impressively organized; about which regattas make sense for Port Townsend sailors to target next (Pumpkin Bowl, Turkey Bowl, Frigid Digit); and about what we could do to make our own small boat regatta in Port Townsend something sailors from around the Sound want to come to. Then we hightailed it to the Bainbridge ferry. I drove straight on with the boats. Hank and Lucas, in keeping with the weekend's theme, got held up behind.</p>
   
     <h2>A practice beyond the sailing</h2>
     <p>Here's the thing I keep coming back to. The sailing was the obvious practice. Light air on Saturday, heavy air on Sunday, and in both cases learning how to make the boat go and how to stay safe. That part was deeply satisfying.</p>
+
+    <figure class="chart-wrap">
+      <h3>Time at each speed</h3>
+      <p class="sub">Minutes spent in each 1-knot speed band, from my watch</p>
+      <div class="legend"><span style="--c:#2a78d6">Saturday</span><span style="--c:#eb6834">Sunday</span></div>
+      <div id="speed-chart"><div id="speed-tip" class="viz-tip" hidden></div></div>
+      <details class="data"><summary>Show the numbers</summary>
+        <table><thead><tr><th>Speed</th><th>Saturday (min)</th><th>Sunday (min)</th></tr></thead><tbody><tr><td>0–1 kt</td><td>28.6</td><td>2.5</td></tr><tr><td>1–2 kt</td><td>46.7</td><td>2.4</td></tr><tr><td>2–3 kt</td><td>33.7</td><td>2.1</td></tr><tr><td>3–4 kt</td><td>9.2</td><td>6.4</td></tr><tr><td>4–5 kt</td><td>0.0</td><td>16.2</td></tr><tr><td>5–6 kt</td><td>0.0</td><td>31.0</td></tr><tr><td>6–7 kt</td><td>0.0</td><td>12.0</td></tr><tr><td>7–8 kt</td><td>0.0</td><td>3.3</td></tr><tr><td>8+ kt</td><td>0.0</td><td>0.2</td></tr></tbody></table>
+      </details>
+    </figure>
     <p>But we were practicing a lot more than sailing. We were practicing how to get organized to travel to another venue, and how to relate to new friends on a long trip. We were practicing how to load three boats on one truck and get them there in one piece. We were practicing how to show up somewhere new, ask for help, and take it. And we were practicing the thing that I think matters most for what we're trying to build: talking to other sailors, learning how their fleets work and what's been successful for them, and inviting them to come sail with us. Every one of those is a skill, and every one of them gets better with reps.</p>
     <p>There's a personal side to this too. My normal week is remote work, a small child, a phone that never stops, and attention that's split six ways before breakfast. When I'm in a Laser, none of that exists. The boat demands everything, and it demands it right now. In conditions like we had this weekend, that's even more true. It's the most centering thing I do, and I've come to need it.</p>
   
     <h2>Where this is going</h2>
-    <p>Three boats and three sailors went to Seattle. Nobody finished a race. And we came home with a stronger fleet, new friends in the Aero, Snipe and Laser communities, a list of regattas to aim for, and a clearer picture of what a Port Townsend small boat regatta could become.</p>
+    <p>Three boats and three sailors went to Seattle. Nobody finished a race. And we came home with a stronger fleet, new friends in the Aero, Snipe and Laser communities, a list of regattas to aim for, and a clearer picture of what a Port Townsend small boat regatta could become. I also came home with a personal goal: next time it blows like that, plane on purpose instead of by accident.</p>
     <p>I have the strong sense that we're building something here: a fleet, a community, and a group of people who are getting better at a hard thing together. The results sheet won't show any of that (yet). But if you've ever wanted to sail a small boat, come find us on a Monday night. There's room on the truck, and if you join us, I'll even give you one of these very cool bumper stickers.</p>
   
     <figure>
@@ -163,6 +232,9 @@
   </footer>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="tracks.js"></script>
+<script src="tracks-viz.js"></script>
 <script>
   // Play the timelapse while it's on screen; pause when it scrolls away.
   (function () {
