@@ -71,3 +71,7 @@ th { color: var(--muted); font-weight: 600; }
 code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .92em; background: var(--accent-soft); padding: 1px 5px; border-radius: 5px; }
 footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
 footer a { margin-right: 16px; }
+
+/* Return strip to the family site at the top of every page */
+.return-strip { display: flex; justify-content: space-between; background: var(--accent); color: #fff; font-size: 13px; padding: 6px 16px; text-decoration: none; }
+.return-strip .aside { opacity: .7; }

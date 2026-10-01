@@ -9,75 +9,65 @@
 <meta property="og:description" content="Three Lasers, three sailors and one truck: a weekend at the Puget Sound Sailing Championships in Seattle.">
 <meta property="og:image" content="https://wilder-roses.com/sailing/pssc-2026/images/cyc-docks.jpg">
 <meta property="og:type" content="article">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css">
 <style>
-  :root { --navy:#1a365d; --blue:#2b6cb0; --ink:#2d3748; --muted:#718096; --faint:#a0aec0; --card:#fff; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
-    background:linear-gradient(135deg,#f5f7fa 0%,#e4e8ec 100%);
-    min-height:100vh; color:var(--ink); line-height:1.7; font-size:18px;
-  }
-  a { color:var(--blue); }
-  .container { max-width:800px; margin:0 auto; padding:2.5rem 1.5rem 3rem; }
-  .home { font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--navy); text-decoration:none; font-size:1.1rem; }
-  .home:hover { text-decoration:underline; }
-  header.article-head { text-align:center; margin:2.5rem 0 2rem; }
-  .kicker { font-size:.95rem; color:var(--muted); margin-bottom:.75rem; }
-  h1 { font-family:'Space Grotesk',sans-serif; font-weight:600; letter-spacing:-.02em; color:var(--navy);
-       font-size:clamp(2rem,5.5vw,2.9rem); line-height:1.15; max-width:680px; margin:0 auto; }
-  .byline { margin-top:1rem; color:var(--muted); font-size:1rem; }
-  main { background:var(--card); border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,.05); padding:2.5rem 3rem 3rem; }
-  h2 { font-family:'Space Grotesk',sans-serif; font-weight:600; letter-spacing:-.01em; color:var(--navy);
-       font-size:1.5rem; line-height:1.25; margin:2.75rem 0 .75rem; }
-  p { margin:0 0 1.1rem; }
-  .tldr { background:#f5f7fa; border-left:4px solid var(--navy); border-radius:0 8px 8px 0; padding:1.1rem 1.4rem .3rem; margin:1.75rem 0 1rem; }
-  .tldr h2 { margin-top:0; font-size:1.15rem; }
-  figure { margin:2rem -3rem; }
-  figure img, figure video { display:block; width:100%; height:auto; background:#e4e8ec; }
-  figure.portrait img { max-width:520px; margin:0 auto; border-radius:12px; }
-  figcaption { padding:.6rem 3rem 0; font-size:.9rem; line-height:1.5; color:var(--muted); }
-  .credit { white-space:nowrap; font-style:italic; }
-  .signoff { margin-top:2.5rem; padding-top:1.25rem; border-top:1px solid #e4e8ec; font-style:italic; color:var(--muted); }
-  footer { margin-top:3rem; text-align:center; color:var(--faint); font-size:.9rem; }
-  footer a { color:var(--muted); }
+  body { font-size: 17px; line-height: 1.55; }
+  .container { max-width: var(--measure); margin: 0 auto; padding: 22px 20px 24px; }
+  @media (min-width: 800px) { .container { padding: 40px 20px 48px; } }
+  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-bottom: 1px solid var(--ink); padding-bottom: 10px; font-size: 14px; }
+  header.article-head { margin: 20px 0 20px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+  .kicker, .byline { font-size: 13px; color: var(--muted); margin: 0; }
+  h1 { font: 600 28px/1.15 var(--serif); letter-spacing: -.01em; text-wrap: pretty; margin: 0; max-width: none; }
+  @media (min-width: 800px) { h1 { font-size: 36px; } }
+  main { background: none; border-radius: 0; box-shadow: none; padding: 0; }
+  h2 { font: 600 21px/1.2 var(--serif); margin: 2rem 0 .5rem; }
+  p { margin: 0 0 1.1rem; text-wrap: pretty; }
+  .tldr { background: none; border-left: 2px solid var(--accent); border-radius: 0; padding: 2px 0 2px 16px; margin: 1.5rem 0 1.25rem; }
+  .tldr h2 { margin-top: 0; font-size: 17px; }
+  .tldr p { font-size: 16px; }
+  figure { margin: 1.5rem -20px; }
+  figure img, figure video { display: block; width: 100%; height: auto; background: var(--rule); }
+  figure.portrait img { max-width: 520px; margin: 0 auto; border-radius: 0; }
+  figcaption { padding: .5rem 20px 0; font-size: 13px; line-height: 1.5; color: var(--muted); }
+  @media (min-width: 800px) { figure { margin: 2rem 0; } figure img { border-radius: 3px; } figcaption { padding: .6rem 0 0; } }
+  .credit { white-space: nowrap; font-style: italic; }
+  .signoff { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-style: italic; color: var(--muted); }
+  footer { margin-top: 2rem; border-top: 1px solid var(--ink); padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); text-align: left; }
 
   /* GPS track maps, stats and chart */
   .track { margin:2rem 0; }
-  .map { height:420px; border-radius:12px; overflow:hidden; background:#e4e8ec; z-index:0; }
+  .map { height:420px; border-radius:3px; overflow:hidden; background:var(--rule); z-index:0; }
   .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; margin:.75rem 0 0; }
-  .stat { background:#f5f7fa; border-radius:10px; padding:.7rem .8rem; }
-  .stat b { display:block; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1.45rem; color:var(--navy); line-height:1.1; }
+  .stat { background:var(--rule); border-radius:4px; padding:.7rem .8rem; }
+  .stat b { display:block; font-family:var(--serif); font-weight:600; font-size:1.45rem; color:var(--ink); line-height:1.1; }
   .stat span { font-size:.8rem; color:var(--muted); }
   .scale { display:flex; align-items:center; gap:.6rem; margin-top:.6rem; font-size:.8rem; color:var(--muted); }
   .scale i { flex:0 0 160px; height:8px; border-radius:4px; background:linear-gradient(90deg,#86b6ef,#3987e5,#1c5cab,#0d366b); }
   .track .cap { font-size:.9rem; color:var(--muted); line-height:1.5; margin:.6rem 0 0; }
-  .leaflet-tooltip.map-note { font:500 12px/1.3 'DM Sans',sans-serif; color:#1a365d; border:0; box-shadow:0 1px 4px rgba(0,0,0,.18); padding:4px 7px; }
-  .leaflet-tooltip.map-tip { font:13px/1.3 'DM Sans',sans-serif; color:#2d3748; }
-  .leaflet-container { font-family:'DM Sans',sans-serif; }
-  .replay { display:flex; align-items:center; gap:.35rem; background:rgba(255,255,255,.94); border-radius:10px; padding:.35rem .5rem; box-shadow:0 1px 4px rgba(0,0,0,.18); font:13px/1.2 'DM Sans',sans-serif; color:#2d3748; }
-  .replay button { width:28px; height:28px; border:0; border-radius:50%; background:#1a365d; color:#fff; font-size:11px; cursor:pointer; display:grid; place-items:center; }
-  .replay .rp-restart { background:#e4e8ec; color:#1a365d; font-size:15px; }
+  .leaflet-tooltip.map-note { font:500 12px/1.3 var(--sans); color:var(--ink); border:0; box-shadow:0 1px 4px rgba(0,0,0,.18); padding:4px 7px; }
+  .leaflet-tooltip.map-tip { font:13px/1.3 var(--sans); color:var(--ink); }
+  .leaflet-container { font-family:var(--sans); }
+  .replay { display:flex; align-items:center; gap:.35rem; background:rgba(255,255,255,.94); border-radius:10px; padding:.35rem .5rem; box-shadow:0 1px 4px rgba(0,0,0,.18); font:13px/1.2 var(--sans); color:var(--ink); }
+  .replay button { width:28px; height:28px; border:0; border-radius:50%; background:var(--ink); color:#fff; font-size:11px; cursor:pointer; display:grid; place-items:center; }
+  .replay .rp-restart { background:var(--rule); color:var(--ink); font-size:15px; }
   .replay .rp-read { display:grid; grid-template-columns:auto auto; column-gap:.5rem; align-items:baseline; margin-left:.2rem; min-width:128px; }
-  .replay .rp-time { font-weight:600; color:#1a365d; font-variant-numeric:tabular-nums; }
+  .replay .rp-time { font-weight:600; color:var(--ink); font-variant-numeric:tabular-nums; }
   .replay .rp-spd { font-variant-numeric:tabular-nums; text-align:right; }
-  .replay .rp-x { grid-column:1 / -1; font-size:11px; color:#718096; }
-  .replay .rp-bar { grid-column:1 / -1; height:3px; background:#e4e8ec; border-radius:2px; margin-top:3px; overflow:hidden; }
-  .replay .rp-bar i { display:block; height:100%; width:0; background:#1a365d; }
+  .replay .rp-x { grid-column:1 / -1; font-size:11px; color:var(--muted); }
+  .replay .rp-bar { grid-column:1 / -1; height:3px; background:var(--rule); border-radius:2px; margin-top:3px; overflow:hidden; }
+  .replay .rp-bar i { display:block; height:100%; width:0; background:var(--ink); }
   .soft-tiles { filter:grayscale(1) contrast(.9) brightness(1.08); }
   .chart-wrap { position:relative; margin:1.75rem 0 .5rem; }
-  .chart-wrap h3 { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1.1rem; color:var(--navy); margin-bottom:.25rem; }
+  .chart-wrap h3 { font-family:var(--serif); font-weight:600; font-size:1.1rem; color:var(--ink); margin-bottom:.25rem; }
   .chart-wrap .sub { font-size:.9rem; color:var(--muted); margin-bottom:.5rem; }
   .legend { display:flex; gap:1.1rem; font-size:.85rem; color:var(--ink); margin-bottom:.35rem; }
   .legend span::before { content:''; display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:.4rem; background:var(--c); vertical-align:-1px; }
   #speed-chart { position:relative; }
   #speed-chart svg { display:block; width:100%; height:auto; overflow:visible; }
-  #speed-chart .ax { font:12px 'DM Sans',sans-serif; fill:#718096; }
-  #speed-chart .dl { font:600 12px 'DM Sans',sans-serif; fill:#2d3748; }
+  #speed-chart .ax { font:12px var(--sans); fill:var(--muted); }
+  #speed-chart .dl { font:600 12px var(--sans); fill:var(--ink); }
   #speed-chart rect:focus { outline:none; }
-  .viz-tip { position:absolute; transform:translate(-50%,-100%); background:#fff; color:#2d3748; font-size:.8rem; line-height:1.35; padding:.35rem .55rem; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.15); pointer-events:none; white-space:nowrap; }
+  .viz-tip { position:absolute; transform:translate(-50%,-100%); background:#fff; color:var(--ink); font-size:.8rem; line-height:1.35; padding:.35rem .55rem; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.15); pointer-events:none; white-space:nowrap; }
   details.data { font-size:.85rem; color:var(--muted); margin-top:.4rem; }
   details.data table { border-collapse:collapse; margin-top:.4rem; }
   details.data th, details.data td { padding:.2rem .7rem .2rem 0; text-align:right; }
@@ -86,19 +76,12 @@
     .map { height:340px; }
     .stats { grid-template-columns:repeat(2,1fr); }
   }
-  @media (max-width:600px) {
-    body { font-size:17px; }
-    main { padding:1.75rem 1.25rem 2rem; }
-    figure { margin:1.5rem -1.25rem; }
-    figure.portrait img { border-radius:0; }
-    figcaption { padding:.5rem 1.25rem 0; }
-  }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 <body>
 <div class="container">
-  <a class="home" href="/">&larr; The WilderRoses</a>
+  <div class="top"><a href="/writing/">&larr; Writing</a><a href="/">The WilderRoses</a></div>
 
   <header class="article-head">
     <p class="kicker">Sailing &middot; September 2026 &middot; Puget Sound Sailing Championships, Seattle</p>
@@ -237,7 +220,8 @@
   </main>
 
   <footer>
-    <p><a href="/">The WilderRoses</a> &middot; Port Townsend, Washington</p>
+    <a href="/writing/">&larr; All writing</a>
+    <span>Port Townsend, WA</span>
   </footer>
 </div>
 

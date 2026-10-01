@@ -1,0 +1,54 @@
+/* wilder-roses.com — shared tokens + page chrome (used by /, /writing/, /projects/, /sailing/*) */
+:root {
+  --fog: oklch(97.5% 0.006 85);     /* page background  ≈ #f9f7f2 */
+  --ink: oklch(25% 0.02 200);       /* text, rules       ≈ #1e2b30 */
+  --muted: oklch(50% 0.02 80);      /* dates, captions   ≈ #76705f */
+  --rule: oklch(88% 0.01 85);       /* hairlines         ≈ #dedad1 */
+  --accent: oklch(45% 0.07 235);    /* "water" — links, Laser drawing ≈ #2f5e82 */
+  --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --measure: 760px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--fog); color: var(--ink); font: 16px/1.5 var(--sans); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--ink); text-decoration: underline; }
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 22px 20px 24px; display: flex; flex-direction: column; gap: 22px; }
+@media (min-width: 800px) { .wrap { padding: 40px 20px 48px; gap: 30px; font-size: 17px; } }
+
+/* top rule: wordmark (home) or back link (inner pages) */
+.top { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; border-bottom: 1px solid var(--ink); padding-bottom: 10px; }
+.top .wordmark { font: 600 20px/1 var(--serif); letter-spacing: -.01em; color: var(--ink); }
+.top .back { font-size: 14px; }
+@media (min-width: 800px) { .top .wordmark { font-size: 24px; } .top { padding-bottom: 12px; } }
+.laser { height: 48px; width: auto; color: var(--accent); display: block; }
+@media (min-width: 800px) { .laser { height: 56px; } }
+
+h1 { margin: 0; font: 600 30px/1.1 var(--serif); letter-spacing: -.01em; }
+.lede { margin: 0; color: var(--muted); font-size: 15px; }
+.section-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 8px; }
+.section-head h2 { margin: 0; font: 600 17px/1.2 var(--serif); }
+.section-head a { font-size: 14px; }
+@media (min-width: 800px) { .section-head h2 { font-size: 18px; } }
+
+/* list rows: title + meta, hairline above each */
+.rows { display: flex; flex-direction: column; }
+.row { display: flex; flex-direction: column; gap: 2px; padding: 10px 0; border-top: 1px solid var(--rule); color: var(--ink); }
+.row:hover { text-decoration: none; }
+.row:hover .title { text-decoration: underline; }
+.row .meta { font-size: 14px; color: var(--muted); }
+.row .ext { color: var(--accent); }
+.year { font: 12px ui-monospace, Menlo, monospace; color: var(--muted); padding-bottom: 6px; }
+.year + .row .title, .rows .row .title--serif { font: 600 18px/1.3 var(--serif); }
+
+/* project card */
+.card { display: flex; flex-direction: column; gap: 6px; padding: 16px; background: #fff; border: 1px solid var(--rule); border-radius: 4px; color: var(--ink); }
+.card:hover { text-decoration: none; border-color: var(--accent); }
+.card .head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.card .name { font: 600 19px/1.3 var(--serif); }
+.card .badge { font: 11px ui-monospace, Menlo, monospace; color: #fff; background: var(--accent); border-radius: 3px; padding: 2px 6px; white-space: nowrap; flex: none; }
+.card .desc { font-size: 15px; }
+.card .meta { font-size: 13px; color: var(--muted); }
+
+.foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid var(--ink); padding-top: 12px; font-size: 13px; color: var(--muted); }
