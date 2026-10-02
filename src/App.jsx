@@ -5,6 +5,7 @@ const posts = [
   { href: '/sailing/pssc-2026/', title: 'Learnings from an Outing with the PTSA Laser Fleet', meta: 'Sailing · September 2026' },
 ]
 const projects = [
+  { href: 'https://takemehome.wilder-roses.com/', title: 'Take Me Home', meta: 'Ferry or bridge? Live route times between the Olympic Peninsula and Seattle' },
   { href: '/text2sail/', title: 'Text to Sail', meta: 'A text-message list for Port Townsend small-boat sailors' },
 ]
 
