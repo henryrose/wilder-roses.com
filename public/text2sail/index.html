@@ -13,36 +13,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Text to Sail</title>
   <meta name="description" content="Text to Sail: a text-message list for Port Townsend small-boat sailors to organize and join sailing outings.">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;800&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="return-strip" href="/"><span>&larr; wilder-roses.com</span></a>
+  <a class="return-strip" href="/">&larr; wilder-roses.com</a>
   <div class="wrap">
+    <div class="brand-row">
+      <a class="brand" href="./" aria-label="Text to Sail">
+        <img class="brand-tile" src="icons/icon.svg" width="32" height="32" alt="">
+        <span class="wordmark" aria-hidden="true"><span class="wordmark-light">Text to </span>Sail</span>
+      </a>
+      <span class="brand-tagline">Port Townsend small-boat sailing</span>
+    </div>
+
     <header>
-      <p class="eyebrow">Port Townsend small-boat sailing</p>
-      <h1>Text to Sail</h1>
-      <p class="lede">A text-message list that helps Port Townsend small-boat sailors get on the water together. A sailor texts when they're heading out; subscribers get one short text and can reply to join.</p>
+      <h1>Get on the water together.</h1>
+      <p class="lede">A text-message list for Port Townsend small-boat sailors. A sailor texts when they're heading out; subscribers get one short text and can reply to join.</p>
     </header>
 
     <div class="cta">
-      <p><strong>To subscribe, text SAIL to</strong></p>
-      <p class="number">(877) 360-6751</p>
-      <p>We'll ask what name other sailors should see, then confirm your subscription.</p>
-      <p class="fine">Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for help at any time.</p>
+      <div>
+        <p class="cta-lead">To subscribe, text <span class="key">SAIL</span> to</p>
+        <a class="number" href="sms:+18773606751?&amp;body=SAIL">(877) 360-6751</a>
+      </div>
+      <p class="fine">We'll ask what name other sailors should see, then confirm your subscription. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for help at any time.</p>
     </div>
 
     <h2>How it works</h2>
     <div class="grid">
-      <div>
-        <h3>1. Subscribe</h3>
-        <p>Text the number above. Any message starts signup (SAIL is easy to remember). You'll be asked for a display name and then get a confirmation text. You can also sign up through the club's Discord channel.</p>
-        <h3>2. Hear about sails</h3>
-        <p>When a subscriber posts an outing ("going out 5:30 tomorrow, room for 1"), everyone else gets one text with the time, place, open spots and the wind and tide forecast.</p>
-        <h3>3. Reply to join</h3>
-        <p>Reply with the code in the text (for example <code>J1</code>) to join. You'll only hear more about that sail if it changes or is cancelled.</p>
-      </div>
-      <div class="phone" aria-label="Example text messages">
-        <div class="label">Example messages</div>
+      <ol class="steps">
+        <li><span class="step-n">1</span><div><h3>Subscribe</h3><p>Text the number above. Any message starts signup (SAIL is easy to remember). You'll be asked for a display name and then get a confirmation text. You can also sign up through the club's Discord channel.</p></div></li>
+        <li><span class="step-n">2</span><div><h3>Hear about sails</h3><p>When a subscriber posts an outing ("going out 5:30 tomorrow, room for 1"), everyone else gets one text with the time, place, open spots and the wind and tide forecast.</p></div></li>
+        <li><span class="step-n">3</span><div><h3>Reply to join</h3><p>Reply with the code in the text (for example <code>J1</code>) to join. You'll only hear more about that sail if it changes or is cancelled.</p></div></li>
+      </ol>
+      <div class="phone" role="group" aria-label="Example text messages">
+        <div class="thread-head"><img src="icons/text-to-sail-contact.png" width="40" height="40" alt="">Text to Sail</div>
         <div class="msg out">SAIL</div>
         <div class="msg in">Welcome to Text2Sail, the small-boat sailing list for PT. Sailors text when they are heading out, you reply to join. What name should other sailors see for you? Reply STOP to opt out.</div>
         <div class="msg out">Sam</div>
@@ -77,6 +89,7 @@
     <footer>
       <a href="privacy.html">Privacy policy</a>
       <a href="terms.html">SMS terms</a>
+      <a href="https://windwatch.wilder-roses.com/">Wind Watch</a>
       <span>&copy; 2026 Text2Sail</span>
     </footer>
   </div>
