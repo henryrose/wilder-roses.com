@@ -6,6 +6,7 @@ const posts = [
   { href: '/sailing/pssc-2026/', title: 'Learnings from an Outing with the PTSA Laser Fleet', meta: 'Sailing · September 2026' },
 ]
 const projects = [
+  { href: 'https://havencollectivept.com/', title: 'Haven Collective', meta: 'Website for a Port Townsend art collective of six artist mothers' },
   { href: 'https://windwatch.wilder-roses.com/', title: 'Wind Watch', meta: 'Hourly wind and gust forecast for Port Townsend' },
   { href: 'https://takemehome.wilder-roses.com/', title: 'Take Me Home', meta: 'Ferry or bridge? Live route times between the Olympic Peninsula and Seattle' },
   { href: '/text2sail/', title: 'Text to Sail', meta: 'A text-message list for Port Townsend small-boat sailors' },
