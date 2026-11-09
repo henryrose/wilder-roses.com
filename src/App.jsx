@@ -2,6 +2,7 @@ import Carousel from './Carousel'
 
 // Content lists. Newest first. Home shows at most 3 posts / 3 projects.
 const posts = [
+  { href: '/sailing/lido-14-restoration/', title: 'Bringing a Lido 14 Back to Life', meta: 'Sailing · November 2026' },
   { href: '/sailing/hadlock-downwinder/', title: '[Race Idea] Hadlock Downwinder: Salvation at the breakwater', meta: 'Sailing · October 2026' },
   { href: '/sailing/pssc-2026/', title: 'Learnings from an Outing with the PTSA Laser Fleet', meta: 'Sailing · September 2026' },
 ]
